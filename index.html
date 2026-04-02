@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purva Shridhar Borse — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700;800&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+/* ======================== DARK — MIDNIGHT LUXE ======================== */
+[data-theme="dark"]{
+  --bg:#050505;
+  --bg2:#0a0a0a;
+  --bg-glass:rgba(255,255,255,0.025);
+  --glass-border:rgba(255,215,115,0.06);
+  --glass-border-hover:rgba(255,215,115,0.15);
+  --glass-shine:rgba(255,215,115,0.03);
+  --text:#f5f0e8;
+  --text-secondary:#a09882;
+  --text-dim:#6a6355;
+  --gold:#d4a853;
+  --gold-light:#f0d48a;
+  --gold-dark:#b8922e;
+  --cream:#fff8e7;
+  --gradient-gold:linear-gradient(135deg,#d4a853,#f0d48a,#d4a853);
+  --gradient-gold-subtle:linear-gradient(135deg,rgba(212,168,83,0.12),rgba(240,212,138,0.06));
+  --gradient-bg:radial-gradient(ellipse at 30% 0%,rgba(212,168,83,0.04) 0%,transparent 50%);
+  --gradient-bg2:radial-gradient(ellipse at 70% 100%,rgba(212,168,83,0.03) 0%,transparent 40%);
+  --shadow-card:0 4px 30px rgba(0,0,0,0.5);
+  --shadow-hover:0 12px 50px rgba(212,168,83,0.08);
+  --shadow-gold:0 0 30px rgba(212,168,83,0.1);
+  --toggle-bg:rgba(255,255,255,0.04);
+  --orb-opacity:1;
+  --divider:rgba(212,168,83,0.08);
+  --pill-bg:rgba(212,168,83,0.05);
+  --pill-border:rgba(212,168,83,0.1);
+  --noise-opacity:0.025;
+}
+
+/* ======================== LIGHT — IVORY LUXE ======================== */
+[data-theme="light"]{
+  --bg:#faf8f4;
+  --bg2:#f3f0ea;
+  --bg-glass:rgba(255,255,255,0.7);
+  --glass-border:rgba(180,150,80,0.1);
+  --glass-border-hover:rgba(180,150,80,0.25);
+  --glass-shine:rgba(255,255,255,0.9);
+  --text:#1a1610;
+  --text-secondary:#6b6050;
+  --text-dim:#9a8f7f;
+  --gold:#a07d2e;
+  --gold-light:#c9a245;
+  --gold-dark:#7a5f1e;
+  --cream:#f5efe0;
+  --gradient-gold:linear-gradient(135deg,#a07d2e,#c9a245,#a07d2e);
+  --gradient-gold-subtle:linear-gradient(135deg,rgba(160,125,46,0.06),rgba(201,162,69,0.03));
+  --gradient-bg:radial-gradient(ellipse at 30% 0%,rgba(160,125,46,0.04) 0%,transparent 50%);
+  --gradient-bg2:radial-gradient(ellipse at 70% 100%,rgba(160,125,46,0.03) 0%,transparent 40%);
+  --shadow-card:0 4px 30px rgba(0,0,0,0.04);
+  --shadow-hover:0 12px 50px rgba(160,125,46,0.08);
+  --shadow-gold:0 0 30px rgba(160,125,46,0.06);
+  --toggle-bg:rgba(0,0,0,0.04);
+  --orb-opacity:0.4;
+  --divider:rgba(160,125,46,0.1);
+  --pill-bg:rgba(160,125,46,0.04);
+  --pill-border:rgba(160,125,46,0.1);
+  --noise-opacity:0.015;
+}
+
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--gold) var(--bg)}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);
+  overflow-x:hidden;line-height:1.65;transition:background 0.5s,color 0.4s}
+
+/* ======================== BACKGROUND ======================== */
+.bg-layers{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:var(--gradient-bg),var(--gradient-bg2);transition:background 0.5s}
+
+/* Noise texture */
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:var(--noise-opacity);
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  transition:opacity 0.5s}
+
+/* Gold orbs */
+.orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0;
+  opacity:var(--orb-opacity);transition:opacity 0.6s}
+.orb-1{width:500px;height:500px;top:-15%;left:-8%;background:rgba(212,168,83,0.06);
+  animation:orbDrift1 24s ease-in-out infinite}
+.orb-2{width:400px;height:400px;bottom:-10%;right:-8%;background:rgba(212,168,83,0.04);
+  animation:orbDrift2 28s ease-in-out infinite}
+@keyframes orbDrift1{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,50px)}}
+@keyframes orbDrift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,-40px)}}
+
+/* ======================== THEME TOGGLE ======================== */
+.theme-toggle{position:fixed;top:28px;right:32px;z-index:300;width:58px;height:30px;
+  border-radius:15px;background:var(--toggle-bg);backdrop-filter:blur(12px);
+  border:1px solid var(--glass-border);cursor:pointer;transition:all 0.4s;padding:3px;
+  display:flex;align-items:center}
+.theme-toggle:hover{border-color:var(--gold);box-shadow:var(--shadow-gold)}
+.toggle-knob{width:24px;height:24px;border-radius:50%;
+  background:var(--gradient-gold);transition:transform 0.5s cubic-bezier(0.68,-0.55,0.27,1.55);
+  display:flex;align-items:center;justify-content:center;font-size:12px;
+  box-shadow:0 2px 10px rgba(212,168,83,0.3)}
+[data-theme="light"] .toggle-knob{transform:translateX(28px)}
+
+/* ======================== NAV ======================== */
+nav{position:fixed;top:28px;left:50%;transform:translateX(-50%);z-index:200;
+  display:flex;gap:2px;padding:4px;border-radius:14px;
+  background:var(--bg-glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid var(--glass-border);box-shadow:var(--shadow-card)}
+nav a{color:var(--text-secondary);text-decoration:none;font-size:12.5px;font-weight:500;
+  padding:8px 18px;border-radius:10px;transition:all 0.3s;letter-spacing:0.8px;
+  text-transform:uppercase}
+nav a:hover{color:var(--gold-light)}
+nav a.active{color:var(--bg);background:var(--gradient-gold);font-weight:700;
+  box-shadow:0 2px 12px rgba(212,168,83,0.2)}
+[data-theme="light"] nav a.active{color:#fff}
+
+/* ======================== SECTIONS ======================== */
+section{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:120px 40px}
+@media(max-width:768px){section{padding:80px 20px}}
+
+/* Gold divider line */
+.gold-line{width:60px;height:1px;background:var(--gradient-gold);margin:0 auto 60px;opacity:0.5}
+
+/* ======================== HERO ======================== */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  max-width:1080px;margin:0 auto;padding:0 40px;position:relative}
+
+.hero-eyebrow{font-family:'Fira Code',monospace;font-size:12px;letter-spacing:4px;
+  text-transform:uppercase;color:var(--gold);margin-bottom:24px;
+  opacity:0;animation:fadeUp 0.9s 0.2s forwards;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--gradient-gold)}
+
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(56px,10vw,120px);
+  font-weight:700;line-height:1;letter-spacing:-2px;margin-bottom:24px;
+  opacity:0;animation:fadeUp 0.9s 0.4s forwards}
+.hero h1 .gold{background:var(--gradient-gold);background-clip:text;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.hero-desc{font-size:clamp(16px,1.8vw,20px);color:var(--text-secondary);max-width:550px;
+  line-height:1.8;font-weight:400;opacity:0;animation:fadeUp 0.9s 0.6s forwards}
+
+.hero-actions{display:flex;gap:16px;margin-top:44px;flex-wrap:wrap;
+  opacity:0;animation:fadeUp 0.9s 0.8s forwards}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:12px;
+  font-size:13px;font-weight:600;text-decoration:none;transition:all 0.4s;cursor:pointer;
+  border:none;letter-spacing:0.5px}
+.btn-gold{background:var(--gradient-gold);color:#0a0a0a;
+  box-shadow:0 4px 20px rgba(212,168,83,0.2)}
+.btn-gold:hover{box-shadow:0 8px 36px rgba(212,168,83,0.35);transform:translateY(-2px)}
+.btn-outline{background:transparent;border:1px solid var(--glass-border);color:var(--text)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+
+.hero-meta{display:flex;gap:24px;margin-top:32px;flex-wrap:wrap;
+  opacity:0;animation:fadeUp 0.9s 1s forwards}
+.hero-meta a,.hero-meta span{color:var(--text-dim);font-size:13px;text-decoration:none;
+  display:flex;align-items:center;gap:6px;transition:color 0.3s;
+  font-family:'Fira Code',monospace;font-size:12px}
+.hero-meta a:hover{color:var(--gold)}
+
+/* ======================== SECTION HEADERS ======================== */
+.s-head{margin-bottom:56px}
+.s-num{font-family:'Fira Code',monospace;font-size:12px;color:var(--gold);letter-spacing:3px;
+  margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.s-num::after{content:'';flex:1;max-width:60px;height:1px;background:var(--gradient-gold);opacity:0.4}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,56px);
+  font-weight:600;letter-spacing:-1px;line-height:1.15;font-style:italic}
+
+/* ======================== ABOUT ======================== */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr}}
+.about-text{font-size:16.5px;color:var(--text-secondary);line-height:1.9}
+.about-text strong{color:var(--text);font-weight:600}
+.about-text p+p{margin-top:16px}
+
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{position:relative;padding:28px;border-radius:16px;overflow:hidden;
+  background:var(--bg-glass);backdrop-filter:blur(12px);
+  border:1px solid var(--glass-border);box-shadow:var(--shadow-card);transition:all 0.4s}
+.stat::before{content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(160deg,var(--glass-shine),transparent 60%);pointer-events:none}
+.stat:hover{border-color:var(--glass-border-hover);transform:translateY(-2px);
+  box-shadow:var(--shadow-hover)}
+.stat-val{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;
+  background:var(--gradient-gold);background-clip:text;-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent}
+.stat-label{font-size:11px;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;
+  margin-top:4px;font-weight:600}
+
+/* ======================== SKILLS ======================== */
+.skills-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.sk-card{position:relative;padding:28px;border-radius:18px;overflow:hidden;
+  background:var(--bg-glass);backdrop-filter:blur(12px);
+  border:1px solid var(--glass-border);box-shadow:var(--shadow-card);transition:all 0.4s}
+.sk-card::before{content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(160deg,var(--glass-shine),transparent 50%);pointer-events:none}
+.sk-card:hover{border-color:var(--glass-border-hover);transform:translateY(-2px)}
+/* shimmer */
+.sk-card::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(212,168,83,0.02),transparent);
+  transition:left 0.7s}
+.sk-card:hover::after{left:120%}
+.sk-title{font-family:'Fira Code',monospace;font-size:10.5px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.sk-pills{display:flex;flex-wrap:wrap;gap:7px}
+.sk-pill{padding:5px 13px;border-radius:8px;font-size:12.5px;font-weight:500;
+  background:var(--pill-bg);border:1px solid var(--pill-border);transition:all 0.3s}
+.sk-pill:hover{border-color:var(--gold);background:rgba(212,168,83,0.08);
+  transform:translateY(-1px);box-shadow:0 4px 12px rgba(212,168,83,0.06)}
+
+/* ======================== EXPERIENCE ======================== */
+.exp-list{display:flex;flex-direction:column;gap:24px}
+.exp-item{position:relative;padding:36px;border-radius:20px;overflow:hidden;
+  background:var(--bg-glass);backdrop-filter:blur(14px);
+  border:1px solid var(--glass-border);box-shadow:var(--shadow-card);transition:all 0.5s}
+.exp-item::before{content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(160deg,var(--glass-shine),transparent 50%);pointer-events:none}
+.exp-item:hover{border-color:var(--glass-border-hover);transform:translateY(-3px);
+  box-shadow:var(--shadow-hover)}
+/* Gold left accent */
+.exp-item::after{content:'';position:absolute;left:0;top:24px;bottom:24px;width:2px;
+  background:var(--gradient-gold);border-radius:2px;opacity:0;transition:opacity 0.4s}
+.exp-item:hover::after{opacity:1}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;
+  gap:12px;margin-bottom:14px}
+.exp-role{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;font-style:italic}
+.exp-company{font-size:14px;color:var(--text-secondary);margin-top:2px;font-weight:400}
+.exp-date{font-family:'Fira Code',monospace;font-size:11px;color:var(--gold);
+  padding:5px 14px;border-radius:6px;background:rgba(212,168,83,0.06);
+  border:1px solid rgba(212,168,83,0.1);white-space:nowrap;height:fit-content;letter-spacing:0.5px}
+.exp-desc{list-style:none}
+.exp-desc li{position:relative;padding-left:18px;margin-bottom:10px;font-size:14px;
+  color:var(--text-secondary);line-height:1.75}
+.exp-desc li::before{content:'◆';position:absolute;left:0;top:0;color:var(--gold);
+  font-size:7px;line-height:2.8}
+
+/* ======================== PROJECTS ======================== */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px}
+@media(max-width:500px){.proj-grid{grid-template-columns:1fr}}
+.proj{position:relative;padding:36px;border-radius:22px;overflow:hidden;
+  background:var(--bg-glass);backdrop-filter:blur(14px);
+  border:1px solid var(--glass-border);box-shadow:var(--shadow-card);
+  transition:all 0.5s;display:flex;flex-direction:column}
+.proj::before{content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(160deg,var(--glass-shine),transparent 50%);pointer-events:none}
+.proj:hover{border-color:var(--glass-border-hover);transform:translateY(-4px);
+  box-shadow:var(--shadow-hover)}
+/* Top gold line */
+.proj::after{content:'';position:absolute;top:0;left:24px;right:24px;height:1px;
+  background:var(--gradient-gold);opacity:0;transition:opacity 0.4s}
+.proj:hover::after{opacity:0.5}
+
+.proj-number{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;
+  background:var(--gradient-gold);background-clip:text;-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;opacity:0.15;line-height:1;margin-bottom:12px}
+.proj-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;
+  margin-bottom:2px;font-style:italic}
+.proj-sub{font-family:'Fira Code',monospace;font-size:10.5px;color:var(--gold);
+  letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.proj-desc{font-size:13.5px;color:var(--text-secondary);line-height:1.8;margin-bottom:20px;flex:1}
+.proj-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.proj-tech span{font-family:'Fira Code',monospace;font-size:10.5px;padding:4px 10px;
+  border-radius:5px;background:var(--pill-bg);border:1px solid var(--pill-border);
+  color:var(--gold-light);letter-spacing:0.3px}
+[data-theme="light"] .proj-tech span{color:var(--gold-dark)}
+.proj-link{font-family:'Fira Code',monospace;font-size:11.5px;color:var(--text-dim);
+  text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all 0.3s;
+  letter-spacing:0.5px}
+.proj-link:hover{color:var(--gold);transform:translateX(3px)}
+
+/* ======================== EDUCATION ======================== */
+.edu-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:36px}
+@media(max-width:700px){.edu-row{grid-template-columns:1fr}}
+.edu{position:relative;padding:32px;border-radius:18px;overflow:hidden;
+  background:var(--bg-glass);backdrop-filter:blur(12px);
+  border:1px solid var(--glass-border);box-shadow:var(--shadow-card);transition:all 0.4s}
+.edu::before{content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(160deg,var(--glass-shine),transparent 50%);pointer-events:none}
+.edu:hover{border-color:var(--glass-border-hover);transform:translateY(-2px)}
+.edu-deg{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;
+  margin-bottom:4px;font-style:italic}
+.edu-school{font-size:14px;color:var(--text-secondary);margin-bottom:12px}
+.edu-info{display:flex;gap:16px;font-family:'Fira Code',monospace;font-size:11.5px;flex-wrap:wrap}
+.edu-info .gpa{color:var(--gold)}
+.edu-info .date{color:var(--text-dim)}
+
+.certs{display:flex;flex-direction:column;gap:10px}
+.cert-item{display:flex;align-items:center;gap:14px;padding:16px 22px;border-radius:14px;
+  background:var(--bg-glass);border:1px solid var(--glass-border);transition:all 0.3s}
+.cert-item:hover{border-color:var(--glass-border-hover);transform:translateX(4px)}
+.cert-diamond{width:8px;height:8px;background:var(--gradient-gold);transform:rotate(45deg);
+  flex-shrink:0}
+.cert-item .name{font-size:14px;font-weight:500}
+.cert-item .org{font-family:'Fira Code',monospace;font-size:10.5px;color:var(--text-dim);
+  letter-spacing:0.5px;margin-top:1px}
+
+/* ======================== CONTACT ======================== */
+.contact-sec{text-align:center;padding:160px 40px;position:relative;z-index:10}
+.contact-title{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,8vw,88px);
+  font-weight:600;font-style:italic;line-height:1.05;letter-spacing:-2px;margin-bottom:20px}
+.contact-title .gold{background:var(--gradient-gold);background-clip:text;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.contact-sub{font-size:17px;color:var(--text-secondary);max-width:480px;margin:0 auto 44px;
+  line-height:1.7;font-weight:300}
+.contact-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+
+/* ======================== FOOTER ======================== */
+footer{text-align:center;padding:40px;font-family:'Fira Code',monospace;font-size:10px;
+  color:var(--text-dim);letter-spacing:2.5px;text-transform:uppercase;
+  border-top:1px solid var(--divider);position:relative;z-index:10}
+
+/* ======================== ANIMATIONS ======================== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmerGold{0%{background-position:200% center}100%{background-position:-200% center}}
+
+.reveal{opacity:0;transform:translateY(32px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.stagger .reveal:nth-child(1){transition-delay:0.05s}
+.stagger .reveal:nth-child(2){transition-delay:0.12s}
+.stagger .reveal:nth-child(3){transition-delay:0.19s}
+.stagger .reveal:nth-child(4){transition-delay:0.26s}
+.stagger .reveal:nth-child(5){transition-delay:0.33s}
+
+/* Gold shimmer text effect on hover */
+.gold-shimmer{background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold),var(--gold-light),var(--gold));
+  background-size:200% auto;background-clip:text;-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;animation:shimmerGold 4s linear infinite}
+
+/* ======================== RESPONSIVE ======================== */
+@media(max-width:768px){
+  nav{top:auto;bottom:16px;padding:3px;border-radius:12px}
+  nav a{font-size:10.5px;padding:7px 12px;letter-spacing:0.5px}
+  .theme-toggle{top:20px;right:20px}
+  .hero{padding:0 20px}
+  .contact-sec{padding:100px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- Background -->
+<div class="bg-layers"></div>
+<div class="noise"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- Theme Toggle -->
+<div class="theme-toggle" id="themeToggle" title="Switch theme">
+  <div class="toggle-knob" id="toggleKnob"><span id="toggleIcon">🌙</span></div>
+</div>
+
+<!-- Nav -->
+<nav>
+  <a href="#about" class="active">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Work</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- =================== HERO =================== -->
+<section class="hero" id="hero">
+  <div class="hero-eyebrow">Software Engineer</div>
+  <h1>Purva Shridhar<br><span class="gold">Borse</span></h1>
+  <p class="hero-desc">Driven by curiosity and a love for building — I design full-stack systems where solid engineering meets intuitive user experience, because great software should feel as good as it performs.</p>
+  <div class="hero-actions">
+    <a href="/cdn-cgi/l/email-protection#c9aba6bbbaace7b9bc89a7a6bbbda1aca8babdacbba7e7acadbc" class="btn btn-gold">✉ &nbsp;Get in Touch</a>
+    <a href="https://github.com/bpurva05" target="_blank" class="btn btn-outline">GitHub →</a>
+    <a href="https://www.linkedin.com/in/purva-borse-68551b302/" target="_blank" class="btn btn-outline">LinkedIn</a>
+  </div>
+  <div class="hero-meta">
+    <a href="tel:+16172597857">📞 (617) 259-7857</a>
+    <a href="/cdn-cgi/l/email-protection#b5d7dac7c6d09bc5c0f5dbdac7c1ddd0d4c6c1d0c7db9bd0d1c0">✉ <span class="__cf_email__" data-cfemail="43212c3130266d3336032d2c31372b2622303726312d6d262736">[email&#160;protected]</span></a>
+    <span>📍 Boston, MA</span>
+  </div>
+</section>
+
+<!-- =================== ABOUT =================== -->
+<section id="about">
+  <div class="s-head reveal">
+    <div class="s-num">01</div>
+    <h2 class="s-title">About Me</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>Currently pursuing my <strong>MS in Software Systems Engineering at Northeastern University</strong>, I bring a deep technical foundation shaped by a Computer Science degree from B.K. Birla College, Mumbai — and a genuine excitement for solving problems through code.</p>
+      <p>Over <strong>2+ years of professional experience</strong>, I've designed and shipped production systems across domains like e-commerce, live sports, and AI-powered architectural visualization. Whether it's engineering a resilient Spring Boot backend, building a responsive React interface, or wiring up authentication and payment systems end-to-end — I approach every project with <strong>ownership, precision, and a builder's mindset</strong>. I don't just write features; I care about the craft behind them.</p>
+    </div>
+    <div class="stats stagger">
+      <div class="stat reveal"><div class="stat-val">3.84</div><div class="stat-label">GPA at NEU</div></div>
+      <div class="stat reveal"><div class="stat-val">2+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat reveal"><div class="stat-val">10+</div><div class="stat-label">Technologies</div></div>
+      <div class="stat reveal"><div class="stat-val">4+</div><div class="stat-label">Projects Shipped</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SKILLS =================== -->
+<section id="skills">
+  <div class="s-head reveal">
+    <div class="s-num">02</div>
+    <h2 class="s-title">Expertise</h2>
+  </div>
+  <div class="skills-wrap stagger">
+    <div class="sk-card reveal">
+      <div class="sk-title">Languages</div>
+      <div class="sk-pills">
+        <span class="sk-pill">Java</span><span class="sk-pill">Python</span><span class="sk-pill">C</span>
+        <span class="sk-pill">TypeScript</span><span class="sk-pill">JavaScript</span>
+        <span class="sk-pill">GoLang</span><span class="sk-pill">SQL</span>
+        <span class="sk-pill">HTML</span><span class="sk-pill">CSS</span>
+      </div>
+    </div>
+    <div class="sk-card reveal">
+      <div class="sk-title">Frameworks</div>
+      <div class="sk-pills">
+        <span class="sk-pill">React</span><span class="sk-pill">Next.js</span><span class="sk-pill">Node.js</span>
+        <span class="sk-pill">Spring Boot</span><span class="sk-pill">FastAPI</span>
+        <span class="sk-pill">TanStack</span><span class="sk-pill">Tailwind</span>
+        <span class="sk-pill">.NET</span>
+      </div>
+    </div>
+    <div class="sk-card reveal">
+      <div class="sk-title">Databases</div>
+      <div class="sk-pills">
+        <span class="sk-pill">PostgreSQL</span><span class="sk-pill">MySQL</span>
+        <span class="sk-pill">MongoDB</span><span class="sk-pill">Drizzle ORM</span><span class="sk-pill">JPA</span>
+      </div>
+    </div>
+    <div class="sk-card reveal">
+      <div class="sk-title">Cloud & DevOps</div>
+      <div class="sk-pills">
+        <span class="sk-pill">AWS</span><span class="sk-pill">GCP</span><span class="sk-pill">Docker</span>
+        <span class="sk-pill">Kubernetes</span><span class="sk-pill">CI/CD</span>
+        <span class="sk-pill">Git</span><span class="sk-pill">Postman</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== EXPERIENCE =================== -->
+<section id="experience">
+  <div class="s-head reveal">
+    <div class="s-num">03</div>
+    <h2 class="s-title">Experience</h2>
+  </div>
+  <div class="exp-list stagger">
+
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Full Stack Developer</div>
+          <div class="exp-company">CodSoft Pvt Ltd · Bangalore, India</div>
+        </div>
+        <div class="exp-date">Jun 2024 — Mar 2025</div>
+      </div>
+      <ul class="exp-desc">
+        <li>Built and deployed production-grade applications using React.js, Node.js, and MongoDB — owning architecture, API design, and UI implementation across client-facing products.</li>
+        <li>Implemented JWT authentication, RBAC, and payment gateway integration from the ground up, securing access and enabling seamless transactional experiences.</li>
+        <li>Delivered features across the full development lifecycle within sprint timelines, leveraging modular, reusable component architecture.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Software Engineer</div>
+          <div class="exp-company">KIT Intellect Technologies · Pune, India</div>
+        </div>
+        <div class="exp-date">Aug 2023 — May 2024</div>
+      </div>
+      <ul class="exp-desc">
+        <li>Designed and launched platforms across e-commerce and rural marketplace domains — leading backend design, database modeling, and deployment using Java, Spring Boot, and MySQL.</li>
+        <li>Drove technical decision-making for high-availability systems, enforcing code quality standards and reviewing architecture for scalability.</li>
+        <li>Introduced mentorship workflows and comprehensive documentation practices, improving onboarding efficiency.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Frontend Developer</div>
+          <div class="exp-company">KIT Intellect Technologies · Pune, India</div>
+        </div>
+        <div class="exp-date">Jan 2023 — Jul 2023</div>
+      </div>
+      <ul class="exp-desc">
+        <li>Translated Figma designs into fully responsive, cross-browser interfaces using HTML5, CSS3, JavaScript, and WordPress — earning recognition for pixel-perfect execution.</li>
+        <li>Diagnosed and refactored legacy stylesheets and asset pipelines, reducing page load overhead across multiple live deployments.</li>
+        <li>Collaborated with backend engineers to integrate RESTful APIs, consistently delivering on schedule and securing a return offer for a full-time role.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- =================== PROJECTS =================== -->
+<section id="projects">
+  <div class="s-head reveal">
+    <div class="s-num">04</div>
+    <h2 class="s-title">Selected Work</h2>
+  </div>
+  <div class="proj-grid stagger">
+
+    <div class="proj reveal">
+      <div class="proj-number">01</div>
+      <div class="proj-name">ArchViz</div>
+      <div class="proj-sub">Architectural Visualization</div>
+      <div class="proj-desc">SaaS platform transforming 2D floor plans into photorealistic 3D renders using Claude and Gemini AI. Features persistent media storage, per-user galleries, render comparison, and a community discovery feed with privacy controls.</div>
+      <div class="proj-tech">
+        <span>React</span><span>TypeScript</span><span>Vite</span><span>Tailwind</span>
+        <span>Puter.js</span><span>Claude API</span><span>Gemini API</span>
+      </div>
+    </div>
+
+    <div class="proj reveal">
+      <div class="proj-number">02</div>
+      <div class="proj-name">Tech Store</div>
+      <div class="proj-sub">E-Commerce Platform</div>
+      <div class="proj-desc">Full-featured e-commerce platform with modular Spring Boot backend, layered architecture, five core domain modules including product catalog, cart, and order management with JPA, PostgreSQL, and a responsive React SPA.</div>
+      <div class="proj-tech">
+        <span>Spring Boot</span><span>React</span><span>PostgreSQL</span><span>JPA</span>
+        <span>Tailwind</span><span>REST APIs</span>
+      </div>
+      <a href="https://github.com/bpurva05/Techstore" target="_blank" class="proj-link">↗ View on GitHub</a>
+    </div>
+
+    <div class="proj reveal">
+      <div class="proj-number">03</div>
+      <div class="proj-name">Glimpse</div>
+      <div class="proj-sub">Sports Commentary</div>
+      <div class="proj-desc">Live sports platform delivering real-time scores and AI-generated commentary via Google Gemini API. Multi-tier JWT + OAuth authentication, Swagger-documented APIs, and custom content moderation tooling.</div>
+      <div class="proj-tech">
+        <span>React</span><span>Node.js</span><span>MongoDB</span><span>Gemini API</span>
+        <span>JWT</span><span>OAuth</span><span>Swagger</span>
+      </div>
+      <a href="https://github.com/bpurva05/GLIMPSE" target="_blank" class="proj-link">↗ View on GitHub</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- =================== EDUCATION =================== -->
+<section id="education">
+  <div class="s-head reveal">
+    <div class="s-num">05</div>
+    <h2 class="s-title">Education</h2>
+  </div>
+  <div class="edu-row stagger">
+    <div class="edu reveal">
+      <div class="edu-deg">MS Software Systems Engineering</div>
+      <div class="edu-school">Northeastern University · Boston, MA</div>
+      <div class="edu-info"><span class="gpa">GPA 3.84/4.0</span><span class="date">Sep 2025 — Dec 2027</span></div>
+    </div>
+    <div class="edu reveal">
+      <div class="edu-deg">BS Computer Science</div>
+      <div class="edu-school">B.K. Birla College · Mumbai, India</div>
+      <div class="edu-info"><span class="gpa">GPA 3.76/4.0</span><span class="date">Graduated May 2025</span></div>
+    </div>
+  </div>
+  <div class="s-num reveal" style="margin-bottom:14px">CERTIFICATIONS</div>
+  <div class="certs stagger">
+    <div class="cert-item reveal">
+      <div class="cert-diamond"></div>
+      <div><div class="name">Software Engineering for Web Developers</div><div class="org">IBM SkillsBuild Learning Plan</div></div>
+    </div>
+    <div class="cert-item reveal">
+      <div class="cert-diamond"></div>
+      <div><div class="name">AWS Cloud Badges & Certifications</div><div class="org">Amazon Web Services</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CONTACT =================== -->
+<section class="contact-sec" id="contact">
+  <div class="reveal">
+    <div class="contact-title">Let's create<br><span class="gold">something great</span></div>
+    <p class="contact-sub">Currently pursuing my Master's at Northeastern — open to internship, co-op, and collaboration opportunities.</p>
+    <div class="contact-btns">
+      <a href="/cdn-cgi/l/email-protection#b1d3dec3c2d49fc1c4f1dfdec3c5d9d4d0c2c5d4c3df9fd4d5c4" class="btn btn-gold">✉ &nbsp;Send an Email</a>
+      <a href="https://www.linkedin.com/in/purva-borse-68551b302/" target="_blank" class="btn btn-outline">LinkedIn</a>
+      <a href="https://github.com/bpurva05" target="_blank" class="btn btn-outline">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Purva Shridhar Borse — Crafted with intention</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Theme Toggle
+const toggle = document.getElementById('themeToggle');
+const icon = document.getElementById('toggleIcon');
+const html = document.documentElement;
+if(window.matchMedia && window.matchMedia('(prefers-color-scheme:light)').matches){
+  html.setAttribute('data-theme','light');icon.textContent='☀️';
+}
+toggle.addEventListener('click',()=>{
+  const d = html.getAttribute('data-theme')==='dark';
+  html.setAttribute('data-theme',d?'light':'dark');
+  icon.textContent=d?'☀️':'🌙';
+});
+
+// Scroll Reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Nav active
+const secs=document.querySelectorAll('section[id]');
+const navs=document.querySelectorAll('nav a');
+const navObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navs.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector(`nav a[href="#${e.target.id}"]`);
+      if(a)a.classList.add('active');
+    }
+  });
+},{threshold:0.3});
+secs.forEach(s=>navObs.observe(s));
+
+// Smooth nav
+navs.forEach(a=>{a.addEventListener('click',e=>{
+  e.preventDefault();
+  document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
+})});
+
+// Parallax orbs
+let mx=0,my=0,ox=0,oy=0;
+document.addEventListener('mousemove',e=>{
+  mx=(e.clientX/window.innerWidth-0.5)*2;
+  my=(e.clientY/window.innerHeight-0.5)*2;
+});
+(function anim(){
+  ox+=(mx-ox)*0.02;oy+=(my-oy)*0.02;
+  const o1=document.querySelector('.orb-1'),o2=document.querySelector('.orb-2');
+  if(o1)o1.style.transform=`translate(${ox*30}px,${oy*25}px)`;
+  if(o2)o2.style.transform=`translate(${-ox*25}px,${-oy*20}px)`;
+  requestAnimationFrame(anim);
+})();
+
+// Tilt on project cards
+document.querySelectorAll('.proj').forEach(c=>{
+  c.addEventListener('mousemove',e=>{
+    const r=c.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-0.5;
+    const y=(e.clientY-r.top)/r.height-0.5;
+    c.style.transform=`translateY(-4px) perspective(800px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`;
+  });
+  c.addEventListener('mouseleave',()=>{c.style.transform=''});
+});
+</script>
+</body>
+</html>
