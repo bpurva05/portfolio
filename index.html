@@ -75,13 +75,9 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);
 /* ======================== BACKGROUND ======================== */
 .bg-layers{position:fixed;inset:0;z-index:0;pointer-events:none;
   background:var(--gradient-bg),var(--gradient-bg2);transition:background 0.5s}
-
-/* Noise texture */
 .noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:var(--noise-opacity);
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   transition:opacity 0.5s}
-
-/* Gold orbs */
 .orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0;
   opacity:var(--orb-opacity);transition:opacity 0.6s}
 .orb-1{width:500px;height:500px;top:-15%;left:-8%;background:rgba(212,168,83,0.06);
@@ -119,28 +115,22 @@ nav a.active{color:var(--bg);background:var(--gradient-gold);font-weight:700;
 /* ======================== SECTIONS ======================== */
 section{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:120px 40px}
 @media(max-width:768px){section{padding:80px 20px}}
-
-/* Gold divider line */
 .gold-line{width:60px;height:1px;background:var(--gradient-gold);margin:0 auto 60px;opacity:0.5}
 
 /* ======================== HERO ======================== */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
   max-width:1080px;margin:0 auto;padding:0 40px;position:relative}
-
 .hero-eyebrow{font-family:'Fira Code',monospace;font-size:12px;letter-spacing:4px;
   text-transform:uppercase;color:var(--gold);margin-bottom:24px;
   opacity:0;animation:fadeUp 0.9s 0.2s forwards;display:flex;align-items:center;gap:12px}
 .hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--gradient-gold)}
-
 .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(56px,10vw,120px);
   font-weight:700;line-height:1;letter-spacing:-2px;margin-bottom:24px;
   opacity:0;animation:fadeUp 0.9s 0.4s forwards}
 .hero h1 .gold{background:var(--gradient-gold);background-clip:text;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent}
-
-.hero-desc{font-size:clamp(16px,1.8vw,20px);color:var(--text-secondary);max-width:550px;
+.hero-desc{font-size:clamp(16px,1.8vw,20px);color:var(--text-secondary);max-width:580px;
   line-height:1.8;font-weight:400;opacity:0;animation:fadeUp 0.9s 0.6s forwards}
-
 .hero-actions{display:flex;gap:16px;margin-top:44px;flex-wrap:wrap;
   opacity:0;animation:fadeUp 0.9s 0.8s forwards}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:12px;
@@ -151,10 +141,9 @@ section{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:120p
 .btn-gold:hover{box-shadow:0 8px 36px rgba(212,168,83,0.35);transform:translateY(-2px)}
 .btn-outline{background:transparent;border:1px solid var(--glass-border);color:var(--text)}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
-
 .hero-meta{display:flex;gap:24px;margin-top:32px;flex-wrap:wrap;
   opacity:0;animation:fadeUp 0.9s 1s forwards}
-.hero-meta a,.hero-meta span{color:var(--text-dim);font-size:13px;text-decoration:none;
+.hero-meta a,.hero-meta span{color:var(--text-dim);text-decoration:none;
   display:flex;align-items:center;gap:6px;transition:color 0.3s;
   font-family:'Fira Code',monospace;font-size:12px}
 .hero-meta a:hover{color:var(--gold)}
@@ -166,6 +155,8 @@ section{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:120p
 .s-num::after{content:'';flex:1;max-width:60px;height:1px;background:var(--gradient-gold);opacity:0.4}
 .s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,56px);
   font-weight:600;letter-spacing:-1px;line-height:1.15;font-style:italic}
+.s-subhead{font-family:'Fira Code',monospace;font-size:11px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--text-dim);margin:56px 0 20px}
 
 /* ======================== ABOUT ======================== */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
@@ -173,7 +164,6 @@ section{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:120p
 .about-text{font-size:16.5px;color:var(--text-secondary);line-height:1.9}
 .about-text strong{color:var(--text);font-weight:600}
 .about-text p+p{margin-top:16px}
-
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .stat{position:relative;padding:28px;border-radius:16px;overflow:hidden;
   background:var(--bg-glass);backdrop-filter:blur(12px);
@@ -196,7 +186,6 @@ section{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:120p
 .sk-card::before{content:'';position:absolute;inset:0;border-radius:inherit;
   background:linear-gradient(160deg,var(--glass-shine),transparent 50%);pointer-events:none}
 .sk-card:hover{border-color:var(--glass-border-hover);transform:translateY(-2px)}
-/* shimmer */
 .sk-card::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;
   background:linear-gradient(90deg,transparent,rgba(212,168,83,0.02),transparent);
   transition:left 0.7s}
@@ -218,7 +207,6 @@ section{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:120p
   background:linear-gradient(160deg,var(--glass-shine),transparent 50%);pointer-events:none}
 .exp-item:hover{border-color:var(--glass-border-hover);transform:translateY(-3px);
   box-shadow:var(--shadow-hover)}
-/* Gold left accent */
 .exp-item::after{content:'';position:absolute;left:0;top:24px;bottom:24px;width:2px;
   background:var(--gradient-gold);border-radius:2px;opacity:0;transition:opacity 0.4s}
 .exp-item:hover::after{opacity:1}
@@ -234,6 +222,9 @@ section{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:120p
   color:var(--text-secondary);line-height:1.75}
 .exp-desc li::before{content:'◆';position:absolute;left:0;top:0;color:var(--gold);
   font-size:7px;line-height:2.8}
+/* Promotion: second role under same company */
+.exp-sub{margin-top:26px;padding-top:24px;border-top:1px solid var(--divider)}
+.exp-sub .exp-role{font-size:20px}
 
 /* ======================== PROJECTS ======================== */
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px}
@@ -246,11 +237,9 @@ section{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:120p
   background:linear-gradient(160deg,var(--glass-shine),transparent 50%);pointer-events:none}
 .proj:hover{border-color:var(--glass-border-hover);transform:translateY(-4px);
   box-shadow:var(--shadow-hover)}
-/* Top gold line */
 .proj::after{content:'';position:absolute;top:0;left:24px;right:24px;height:1px;
   background:var(--gradient-gold);opacity:0;transition:opacity 0.4s}
 .proj:hover::after{opacity:0.5}
-
 .proj-number{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;
   background:var(--gradient-gold);background-clip:text;-webkit-background-clip:text;
   -webkit-text-fill-color:transparent;opacity:0.15;line-height:1;margin-bottom:12px}
@@ -259,6 +248,11 @@ section{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:120p
 .proj-sub{font-family:'Fira Code',monospace;font-size:10.5px;color:var(--gold);
   letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
 .proj-desc{font-size:13.5px;color:var(--text-secondary);line-height:1.8;margin-bottom:20px;flex:1}
+.proj-points{list-style:none;margin-bottom:20px;flex:1}
+.proj-points li{position:relative;padding-left:16px;margin-bottom:9px;font-size:13.5px;
+  color:var(--text-secondary);line-height:1.75}
+.proj-points li::before{content:'◆';position:absolute;left:0;top:0;color:var(--gold);
+  font-size:6px;line-height:3}
 .proj-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
 .proj-tech span{font-family:'Fira Code',monospace;font-size:10.5px;padding:4px 10px;
   border-radius:5px;background:var(--pill-bg);border:1px solid var(--pill-border);
@@ -268,6 +262,11 @@ section{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:120p
   text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all 0.3s;
   letter-spacing:0.5px}
 .proj-link:hover{color:var(--gold);transform:translateX(3px)}
+/* Featured projects span full width */
+.proj.featured{grid-column:1/-1}
+@media(min-width:900px){
+  .proj.featured .proj-body{display:grid;grid-template-columns:1.6fr 1fr;gap:36px;align-items:start}
+}
 
 /* ======================== EDUCATION ======================== */
 .edu-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:36px}
@@ -284,7 +283,6 @@ section{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:120p
 .edu-info{display:flex;gap:16px;font-family:'Fira Code',monospace;font-size:11.5px;flex-wrap:wrap}
 .edu-info .gpa{color:var(--gold)}
 .edu-info .date{color:var(--text-dim)}
-
 .certs{display:flex;flex-direction:column;gap:10px}
 .cert-item{display:flex;align-items:center;gap:14px;padding:16px 22px;border-radius:14px;
   background:var(--bg-glass);border:1px solid var(--glass-border);transition:all 0.3s}
@@ -312,8 +310,6 @@ footer{text-align:center;padding:40px;font-family:'Fira Code',monospace;font-siz
 
 /* ======================== ANIMATIONS ======================== */
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes shimmerGold{0%{background-position:200% center}100%{background-position:-200% center}}
-
 .reveal{opacity:0;transform:translateY(32px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .stagger .reveal:nth-child(1){transition-delay:0.05s}
@@ -322,40 +318,40 @@ footer{text-align:center;padding:40px;font-family:'Fira Code',monospace;font-siz
 .stagger .reveal:nth-child(4){transition-delay:0.26s}
 .stagger .reveal:nth-child(5){transition-delay:0.33s}
 
-/* Gold shimmer text effect on hover */
-.gold-shimmer{background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold),var(--gold-light),var(--gold));
-  background-size:200% auto;background-clip:text;-webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;animation:shimmerGold 4s linear infinite}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal,.hero-eyebrow,.hero h1,.hero-desc,.hero-actions,.hero-meta{opacity:1!important;transform:none!important}
+}
+a:focus-visible,.theme-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
 /* ======================== RESPONSIVE ======================== */
 @media(max-width:768px){
-  nav{top:auto;bottom:16px;padding:3px;border-radius:12px}
-  nav a{font-size:10.5px;padding:7px 12px;letter-spacing:0.5px}
+  nav{top:auto;bottom:16px;padding:3px;border-radius:12px;max-width:calc(100vw - 24px);overflow-x:auto}
+  nav a{font-size:10px;padding:7px 10px;letter-spacing:0.4px;white-space:nowrap}
   .theme-toggle{top:20px;right:20px}
   .hero{padding:0 20px}
+  .exp-item,.proj{padding:26px}
   .contact-sec{padding:100px 20px}
 }
 </style>
 </head>
 <body>
 
-<!-- Background -->
 <div class="bg-layers"></div>
 <div class="noise"></div>
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 
-<!-- Theme Toggle -->
-<div class="theme-toggle" id="themeToggle" title="Switch theme">
+<div class="theme-toggle" id="themeToggle" title="Switch theme" role="button" tabindex="0" aria-label="Switch theme">
   <div class="toggle-knob" id="toggleKnob"><span id="toggleIcon">🌙</span></div>
 </div>
 
-<!-- Nav -->
 <nav>
   <a href="#about" class="active">About</a>
   <a href="#skills">Skills</a>
   <a href="#experience">Work</a>
   <a href="#projects">Projects</a>
+  <a href="#leadership">Leadership</a>
   <a href="#contact">Contact</a>
 </nav>
 
@@ -363,11 +359,11 @@ footer{text-align:center;padding:40px;font-family:'Fira Code',monospace;font-siz
 <section class="hero" id="hero">
   <div class="hero-eyebrow">Software Engineer</div>
   <h1>Purva Shridhar<br><span class="gold">Borse</span></h1>
-  <p class="hero-desc">Driven by curiosity and a love for building — I design full-stack systems where solid engineering meets intuitive user experience, because great software should feel as good as it performs.</p>
+  <p class="hero-desc">I build reliable software end to end — from production Spring Boot backends and React interfaces to cloud infrastructure as code and evaluation pipelines that keep LLM features from quietly regressing.</p>
   <div class="hero-actions">
     <a href="mailto:borse.pu@northeastern.edu" class="btn btn-gold">✉ &nbsp;Get in Touch</a>
-    <a href="https://github.com/bpurva05" target="_blank" class="btn btn-outline">GitHub →</a>
-    <a href="https://www.linkedin.com/in/purva-borse-68551b302/" target="_blank" class="btn btn-outline">LinkedIn</a>
+    <a href="https://github.com/bpurva05" target="_blank" rel="noopener" class="btn btn-outline">GitHub →</a>
+    <a href="https://www.linkedin.com/in/purva-borse-68551b302/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
   </div>
   <div class="hero-meta">
     <a href="tel:+16172597857">📞 (617) 259-7857</a>
@@ -384,14 +380,15 @@ footer{text-align:center;padding:40px;font-family:'Fira Code',monospace;font-siz
   </div>
   <div class="about-grid">
     <div class="about-text reveal">
-      <p>Currently pursuing my <strong>MS in Software Systems Engineering at Northeastern University</strong>, I bring a deep technical foundation shaped by a Computer Science degree from B.K. Birla College, Mumbai — and a genuine excitement for solving problems through code.</p>
-      <p>Over <strong>2+ years of professional experience</strong>, I've designed and shipped production systems across domains like e-commerce, live sports, and AI-powered architectural visualization. Whether it's engineering a resilient Spring Boot backend, building a responsive React interface, or wiring up authentication and payment systems end-to-end — I approach every project with <strong>ownership, precision, and a builder's mindset</strong>. I don't just write features; I care about the craft behind them.</p>
+      <p>I’m pursuing an <strong>MS in Software Systems Engineering at Northeastern University</strong>, building on a Computer Science degree from B.K. Birla College, Mumbai.</p>
+      <p>Across <strong>2+ years of professional experience</strong>, I’ve shipped production platforms on Java, Spring Boot, MySQL, and AWS for 10,000+ concurrent users, reviewed code for a team of engineers, and mentored junior developers. Lately my work centers on <strong>cloud-native infrastructure and AI reliability</strong> — provisioning AWS stacks entirely with Terraform, and building CI pipelines that catch LLM prompt regressions before they merge.</p>
+      <p>Outside the classroom, I serve as the elected <strong>Web Master for Northeastern’s IEEE Student Branch</strong> and mentor fellow graduate students through the Peer Path program.</p>
     </div>
     <div class="stats stagger">
-      <div class="stat reveal"><div class="stat-val">3.84</div><div class="stat-label">GPA at NEU</div></div>
+      <div class="stat reveal"><div class="stat-val">3.78</div><div class="stat-label">GPA at NEU</div></div>
       <div class="stat reveal"><div class="stat-val">2+</div><div class="stat-label">Years Experience</div></div>
-      <div class="stat reveal"><div class="stat-val">10+</div><div class="stat-label">Technologies</div></div>
-      <div class="stat reveal"><div class="stat-val">4+</div><div class="stat-label">Projects Shipped</div></div>
+      <div class="stat reveal"><div class="stat-val">4</div><div class="stat-label">Production Platforms</div></div>
+      <div class="stat reveal"><div class="stat-val">10K+</div><div class="stat-label">Concurrent Users Served</div></div>
     </div>
   </div>
 </section>
@@ -406,34 +403,41 @@ footer{text-align:center;padding:40px;font-family:'Fira Code',monospace;font-siz
     <div class="sk-card reveal">
       <div class="sk-title">Languages</div>
       <div class="sk-pills">
-        <span class="sk-pill">Java</span><span class="sk-pill">Python</span><span class="sk-pill">C</span>
-        <span class="sk-pill">TypeScript</span><span class="sk-pill">JavaScript</span>
-        <span class="sk-pill">GoLang</span><span class="sk-pill">SQL</span>
-        <span class="sk-pill">HTML</span><span class="sk-pill">CSS</span>
+        <span class="sk-pill">Python</span><span class="sk-pill">Java</span><span class="sk-pill">TypeScript</span>
+        <span class="sk-pill">JavaScript</span><span class="sk-pill">Go</span><span class="sk-pill">C</span>
+        <span class="sk-pill">SQL</span><span class="sk-pill">HTML/CSS</span>
+      </div>
+    </div>
+    <div class="sk-card reveal">
+      <div class="sk-title">AI & LLMs</div>
+      <div class="sk-pills">
+        <span class="sk-pill">OpenAI API</span><span class="sk-pill">Gemini API</span><span class="sk-pill">Claude API</span>
+        <span class="sk-pill">LangChain</span><span class="sk-pill">Golden Datasets</span>
+        <span class="sk-pill">LLM-as-Judge</span><span class="sk-pill">ML Deployment</span>
       </div>
     </div>
     <div class="sk-card reveal">
       <div class="sk-title">Frameworks</div>
       <div class="sk-pills">
-        <span class="sk-pill">React</span><span class="sk-pill">Next.js</span><span class="sk-pill">Node.js</span>
-        <span class="sk-pill">Spring Boot</span><span class="sk-pill">FastAPI</span>
-        <span class="sk-pill">TanStack</span><span class="sk-pill">Tailwind</span>
-        <span class="sk-pill">.NET</span>
-      </div>
-    </div>
-    <div class="sk-card reveal">
-      <div class="sk-title">Databases</div>
-      <div class="sk-pills">
-        <span class="sk-pill">PostgreSQL</span><span class="sk-pill">MySQL</span>
-        <span class="sk-pill">MongoDB</span><span class="sk-pill">Drizzle ORM</span><span class="sk-pill">JPA</span>
+        <span class="sk-pill">FastAPI</span><span class="sk-pill">Node.js</span><span class="sk-pill">Express.js</span>
+        <span class="sk-pill">Spring Boot</span><span class="sk-pill">React</span><span class="sk-pill">Next.js</span>
       </div>
     </div>
     <div class="sk-card reveal">
       <div class="sk-title">Cloud & DevOps</div>
       <div class="sk-pills">
-        <span class="sk-pill">AWS</span><span class="sk-pill">GCP</span><span class="sk-pill">Docker</span>
-        <span class="sk-pill">Kubernetes</span><span class="sk-pill">CI/CD</span>
-        <span class="sk-pill">Git</span><span class="sk-pill">Postman</span>
+        <span class="sk-pill">AWS EC2</span><span class="sk-pill">RDS</span><span class="sk-pill">Lambda</span>
+        <span class="sk-pill">SNS</span><span class="sk-pill">DynamoDB</span><span class="sk-pill">Terraform</span>
+        <span class="sk-pill">Packer</span><span class="sk-pill">Docker</span><span class="sk-pill">Kubernetes</span>
+        <span class="sk-pill">GitHub Actions</span>
+      </div>
+    </div>
+    <div class="sk-card reveal">
+      <div class="sk-title">Databases & Practices</div>
+      <div class="sk-pills">
+        <span class="sk-pill">PostgreSQL</span><span class="sk-pill">MySQL</span><span class="sk-pill">MongoDB</span>
+        <span class="sk-pill">Redis</span><span class="sk-pill">Git</span><span class="sk-pill">CI/CD</span>
+        <span class="sk-pill">Agile</span><span class="sk-pill">Code Review</span><span class="sk-pill">REST APIs</span>
       </div>
     </div>
   </div>
@@ -450,46 +454,44 @@ footer{text-align:center;padding:40px;font-family:'Fira Code',monospace;font-siz
     <div class="exp-item reveal">
       <div class="exp-header">
         <div>
-          <div class="exp-role">Full Stack Developer</div>
-          <div class="exp-company">CodSoft Pvt Ltd · Bangalore, India</div>
+          <div class="exp-role">Software Engineering Intern (Python)</div>
+          <div class="exp-company">OctaNet Services Pvt Ltd · Bengaluru, India (Remote)</div>
         </div>
-        <div class="exp-date">Jun 2024 — Mar 2025</div>
+        <div class="exp-date">Apr 2025 — Jun 2025</div>
       </div>
       <ul class="exp-desc">
-        <li>Built and deployed production-grade applications using React.js, Node.js, and MongoDB — owning architecture, API design, and UI implementation across client-facing products.</li>
-        <li>Implemented JWT authentication, RBAC, and payment gateway integration from the ground up, securing access and enabling seamless transactional experiences.</li>
-        <li>Delivered features across the full development lifecycle within sprint timelines, leveraging modular, reusable component architecture.</li>
+        <li>Engineered Python automation scripts for data processing, web scraping, and third-party API integration, replacing manual, repetitive workflows with reusable, modular tools designed with object-oriented principles.</li>
+        <li>Automated database management tasks and helped deploy machine learning models into usable workflows, gaining end-to-end exposure across the ML lifecycle from data handling to model delivery.</li>
       </ul>
     </div>
 
     <div class="exp-item reveal">
       <div class="exp-header">
         <div>
-          <div class="exp-role">Software Engineer</div>
-          <div class="exp-company">KIT Intellect Technologies · Pune, India</div>
+          <div class="exp-role">Software Developer</div>
+          <div class="exp-company">KIT Intellect Technologies Pvt Ltd · Pune, India (Remote)</div>
         </div>
-        <div class="exp-date">Aug 2023 — May 2024</div>
+        <div class="exp-date">May 2024 — Feb 2025</div>
       </div>
       <ul class="exp-desc">
-        <li>Designed and launched platforms across e-commerce and rural marketplace domains — leading backend design, database modeling, and deployment using Java, Spring Boot, and MySQL.</li>
-        <li>Drove technical decision-making for high-availability systems, enforcing code quality standards and reviewing architecture for scalability.</li>
-        <li>Introduced mentorship workflows and comprehensive documentation practices, improving onboarding efficiency.</li>
+        <li>Deployed 4 production platforms (e-commerce, government, rural marketplace) on Java, Spring Boot, MySQL, and AWS, owning backend architecture through deployment for 10,000+ concurrent users with high availability.</li>
+        <li>Containerized services with Docker and led code reviews of 50+ PRs across a team of 6+ engineers, enforcing code quality standards and guiding the team through complex technical issues.</li>
+        <li>Established mentorship workflows for 4 junior developers and authored 15+ documentation guides, improving team onboarding efficiency by 30%.</li>
       </ul>
-    </div>
 
-    <div class="exp-item reveal">
-      <div class="exp-header">
-        <div>
-          <div class="exp-role">Frontend Developer</div>
-          <div class="exp-company">KIT Intellect Technologies · Pune, India</div>
+      <div class="exp-sub">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Frontend Developer</div>
+            <div class="exp-company">Promoted to Software Developer within 8 months</div>
+          </div>
+          <div class="exp-date">Sep 2023 — Apr 2024</div>
         </div>
-        <div class="exp-date">Jan 2023 — Jul 2023</div>
+        <ul class="exp-desc">
+          <li>Built 20+ responsive interfaces from Figma designs (HTML5, CSS3, JavaScript, Tailwind CSS) and refactored legacy stylesheets across 5 client deployments, cutting page load times by 40% and improving Lighthouse scores.</li>
+          <li>Integrated 10+ RESTful APIs with backend engineers via Git workflows, shipping 100% of production features on schedule.</li>
+        </ul>
       </div>
-      <ul class="exp-desc">
-        <li>Translated Figma designs into fully responsive, cross-browser interfaces using HTML5, CSS3, JavaScript, and WordPress — earning recognition for pixel-perfect execution.</li>
-        <li>Diagnosed and refactored legacy stylesheets and asset pipelines, reducing page load overhead across multiple live deployments.</li>
-        <li>Collaborated with backend engineers to integrate RESTful APIs, consistently delivering on schedule and securing a return offer for a full-time role.</li>
-      </ul>
     </div>
 
   </div>
@@ -503,8 +505,46 @@ footer{text-align:center;padding:40px;font-family:'Fira Code',monospace;font-siz
   </div>
   <div class="proj-grid stagger">
 
-    <div class="proj reveal">
+    <div class="proj featured reveal">
       <div class="proj-number">01</div>
+      <div class="proj-name">LLM Eval Pipeline</div>
+      <div class="proj-sub">Prompt Regression Testing</div>
+      <div class="proj-body">
+        <ul class="proj-points">
+          <li>Runs LLM features against a hand-labeled golden dataset on every prompt change, scoring category accuracy and summary quality with an LLM-as-judge over concurrent eval runs.</li>
+          <li>Diffs each run against the last with configurable warning and critical thresholds and a bulk-flip override, plus rolling-window drift detection that catches gradual degradation per-run checks miss.</li>
+          <li>GitHub Actions posts PR comments, sends Slack alerts, publishes HTML diff reports, and blocks merges on critical regressions; containerized with Docker and SQLite run history.</li>
+        </ul>
+        <div>
+          <div class="proj-tech">
+            <span>Python</span><span>OpenAI API</span><span>GitHub Actions</span><span>Docker</span><span>SQLite</span><span>Slack</span>
+          </div>
+          <a href="https://github.com/bpurva05/llm-eval-pipeline" target="_blank" rel="noopener" class="proj-link">↗ View on GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj featured reveal">
+      <div class="proj-number">02</div>
+      <div class="proj-name">Cloud-Native Web App on AWS</div>
+      <div class="proj-sub">Infrastructure as Code · GitOps</div>
+      <div class="proj-body">
+        <ul class="proj-points">
+          <li>Provisioned the full AWS stack as code with Terraform and Packer-baked immutable AMIs: EC2 Auto Scaling behind an ALB, RDS Multi-AZ, S3, Route 53, and CloudWatch, with zero manual console changes.</li>
+          <li>Multi-account GitOps CI/CD in GitHub Actions promotes builds from DEV to DEMO, versions Launch Templates, triggers ASG instance refresh, and gates on health checks.</li>
+          <li>Event-driven SNS → Lambda email verification with DynamoDB idempotency for exactly-once delivery, secured by per-service KMS keys, Secrets Manager, ACM TLS, and least-privilege IAM.</li>
+        </ul>
+        <div>
+          <div class="proj-tech">
+            <span>FastAPI</span><span>PostgreSQL</span><span>Terraform</span><span>Packer</span><span>GitHub Actions</span><span>AWS</span>
+          </div>
+          <a href="https://github.com/bpurva05/webapp_fork" target="_blank" rel="noopener" class="proj-link">↗ View on GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj reveal">
+      <div class="proj-number">03</div>
       <div class="proj-name">ArchViz</div>
       <div class="proj-sub">Architectural Visualization</div>
       <div class="proj-desc">SaaS platform transforming 2D floor plans into photorealistic 3D renders using Claude and Gemini AI. Features persistent media storage, per-user galleries, render comparison, and a community discovery feed with privacy controls.</div>
@@ -515,27 +555,65 @@ footer{text-align:center;padding:40px;font-family:'Fira Code',monospace;font-siz
     </div>
 
     <div class="proj reveal">
-      <div class="proj-number">02</div>
+      <div class="proj-number">04</div>
       <div class="proj-name">Tech Store</div>
       <div class="proj-sub">E-Commerce Platform</div>
-      <div class="proj-desc">Full-featured e-commerce platform with modular Spring Boot backend, layered architecture, five core domain modules including product catalog, cart, and order management with JPA, PostgreSQL, and a responsive React SPA.</div>
+      <div class="proj-desc">Full-featured e-commerce platform with a modular Spring Boot backend, layered architecture, and five core domain modules including product catalog, cart, and order management with JPA, PostgreSQL, and a responsive React SPA.</div>
       <div class="proj-tech">
         <span>Spring Boot</span><span>React</span><span>PostgreSQL</span><span>JPA</span>
         <span>Tailwind</span><span>REST APIs</span>
       </div>
-      <a href="https://github.com/bpurva05/Techstore" target="_blank" class="proj-link">↗ View on GitHub</a>
+      <a href="https://github.com/bpurva05/Techstore" target="_blank" rel="noopener" class="proj-link">↗ View on GitHub</a>
     </div>
 
     <div class="proj reveal">
-      <div class="proj-number">03</div>
+      <div class="proj-number">05</div>
       <div class="proj-name">Glimpse</div>
       <div class="proj-sub">Sports Commentary</div>
-      <div class="proj-desc">Live sports platform delivering real-time scores and AI-generated commentary via Google Gemini API. Multi-tier JWT + OAuth authentication, Swagger-documented APIs, and custom content moderation tooling.</div>
+      <div class="proj-desc">Live sports platform delivering real-time scores and AI-generated commentary via the Google Gemini API. Multi-tier JWT + OAuth authentication, Swagger-documented APIs, and custom content moderation tooling.</div>
       <div class="proj-tech">
         <span>React</span><span>Node.js</span><span>MongoDB</span><span>Gemini API</span>
         <span>JWT</span><span>OAuth</span><span>Swagger</span>
       </div>
-      <a href="https://github.com/bpurva05/GLIMPSE" target="_blank" class="proj-link">↗ View on GitHub</a>
+      <a href="https://github.com/bpurva05/GLIMPSE" target="_blank" rel="noopener" class="proj-link">↗ View on GitHub</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- =================== LEADERSHIP =================== -->
+<section id="leadership">
+  <div class="s-head reveal">
+    <div class="s-num">05</div>
+    <h2 class="s-title">Leadership & Volunteering</h2>
+  </div>
+  <div class="exp-list stagger">
+
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Web Master (Elected, Executive Board)</div>
+          <div class="exp-company">IEEE Student Branch, Northeastern University · Boston, MA</div>
+        </div>
+        <div class="exp-date">Aug 2026 — Present</div>
+      </div>
+      <ul class="exp-desc">
+        <li>Led the end-to-end redesign and rebuild of the branch website, increasing traffic by 25% and average session duration by 15% through mobile responsiveness, improved navigation, and better accessibility.</li>
+        <li>Organizing <em>AI Meets Electrical Engineering</em>, a hands-on workshop introducing engineering students to applied AI/ML.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Peer Mentor</div>
+          <div class="exp-company">Peer Path Program, Center for Student Involvement · Boston, MA</div>
+        </div>
+        <div class="exp-date">Sep 2026 — Present</div>
+      </div>
+      <ul class="exp-desc">
+        <li>Mentor fellow graduate students as they navigate academic and campus life at Northeastern.</li>
+      </ul>
     </div>
 
   </div>
@@ -544,19 +622,19 @@ footer{text-align:center;padding:40px;font-family:'Fira Code',monospace;font-siz
 <!-- =================== EDUCATION =================== -->
 <section id="education">
   <div class="s-head reveal">
-    <div class="s-num">05</div>
+    <div class="s-num">06</div>
     <h2 class="s-title">Education</h2>
   </div>
   <div class="edu-row stagger">
     <div class="edu reveal">
       <div class="edu-deg">MS Software Systems Engineering</div>
       <div class="edu-school">Northeastern University · Boston, MA</div>
-      <div class="edu-info"><span class="gpa">GPA 3.84/4.0</span><span class="date">Sep 2025 — Dec 2027</span></div>
+      <div class="edu-info"><span class="gpa">GPA 3.78/4.0</span><span class="date">Sep 2025 — Dec 2027</span></div>
     </div>
     <div class="edu reveal">
       <div class="edu-deg">BS Computer Science</div>
       <div class="edu-school">B.K. Birla College · Mumbai, India</div>
-      <div class="edu-info"><span class="gpa">GPA 3.76/4.0</span><span class="date">Graduated May 2025</span></div>
+      <div class="edu-info"><span class="gpa">GPA 3.76/4.0</span><span class="date">Aug 2022 — May 2025</span></div>
     </div>
   </div>
   <div class="s-num reveal" style="margin-bottom:14px">CERTIFICATIONS</div>
@@ -575,12 +653,12 @@ footer{text-align:center;padding:40px;font-family:'Fira Code',monospace;font-siz
 <!-- =================== CONTACT =================== -->
 <section class="contact-sec" id="contact">
   <div class="reveal">
-    <div class="contact-title">Let's create<br><span class="gold">something great</span></div>
-    <p class="contact-sub">Currently pursuing my Master's at Northeastern — open to internship, co-op, and collaboration opportunities.</p>
+    <div class="contact-title">Let’s create<br><span class="gold">something great</span></div>
+    <p class="contact-sub">Currently pursuing my Master’s at Northeastern — open to software engineering internship, co-op, and collaboration opportunities.</p>
     <div class="contact-btns">
       <a href="mailto:borse.pu@northeastern.edu" class="btn btn-gold">✉ &nbsp;Send an Email</a>
-      <a href="https://www.linkedin.com/in/purva-borse-68551b302/" target="_blank" class="btn btn-outline">LinkedIn</a>
-      <a href="https://github.com/bpurva05" target="_blank" class="btn btn-outline">GitHub</a>
+      <a href="https://www.linkedin.com/in/purva-borse-68551b302/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+      <a href="https://github.com/bpurva05" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
     </div>
   </div>
 </section>
@@ -592,14 +670,16 @@ footer{text-align:center;padding:40px;font-family:'Fira Code',monospace;font-siz
 const toggle = document.getElementById('themeToggle');
 const icon = document.getElementById('toggleIcon');
 const html = document.documentElement;
-if(window.matchMedia && window.matchMedia('(prefers-color-scheme:light)').matches){
+if(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches){
   html.setAttribute('data-theme','light');icon.textContent='☀️';
 }
-toggle.addEventListener('click',()=>{
+function flipTheme(){
   const d = html.getAttribute('data-theme')==='dark';
   html.setAttribute('data-theme',d?'light':'dark');
   icon.textContent=d?'☀️':'🌙';
-});
+}
+toggle.addEventListener('click',flipTheme);
+toggle.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flipTheme();}});
 
 // Scroll Reveal
 const obs=new IntersectionObserver(entries=>{
@@ -613,9 +693,8 @@ const navs=document.querySelectorAll('nav a');
 const navObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
-      navs.forEach(a=>a.classList.remove('active'));
       const a=document.querySelector(`nav a[href="#${e.target.id}"]`);
-      if(a)a.classList.add('active');
+      if(a){navs.forEach(n=>n.classList.remove('active'));a.classList.add('active');}
     }
   });
 },{threshold:0.3});
@@ -641,8 +720,8 @@ document.addEventListener('mousemove',e=>{
   requestAnimationFrame(anim);
 })();
 
-// Tilt on project cards
-document.querySelectorAll('.proj').forEach(c=>{
+// Tilt on smaller project cards
+document.querySelectorAll('.proj:not(.featured)').forEach(c=>{
   c.addEventListener('mousemove',e=>{
     const r=c.getBoundingClientRect();
     const x=(e.clientX-r.left)/r.width-0.5;
